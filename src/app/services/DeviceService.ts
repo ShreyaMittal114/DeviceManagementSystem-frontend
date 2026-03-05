@@ -38,11 +38,11 @@ export class DeviceService {
    }
 
   createDevice(device:Device):Observable<string>{
-  return this.http.post<string>(`${this.baseUrl}/create`,device);
+  return this.http.post<string>(`${this.baseUrl}/create`,device,{responseType:'text' as 'json'});
   }
 
   deleteDevice(id:String):Observable<string>{
-  return this.http.delete<string>(`${this.baseUrl}/${id}`);
+  return this.http.delete<string>(`${this.baseUrl}/${id}`,{responseType:'text' as 'json'});
   }
 
   getShelfPositions(id:string){

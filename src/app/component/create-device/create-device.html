@@ -1,0 +1,109 @@
+<div class="container mt-4">
+ 
+  <h2 class="mb-4">Create Device</h2>
+ 
+  <form (ngSubmit)="createDevice()" #deviceForm="ngForm">
+ 
+    <!-- Device Name -->
+    <div class="mb-3">
+      <label class="form-label">Device Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        [(ngModel)]="device.name"
+        required
+        #name="ngModel">
+ 
+      <div *ngIf="name.invalid && name.touched" class="text-danger">
+        Device Name is required
+      </div>
+    </div>
+ 
+    <!-- Part Number -->
+    <div class="mb-3">
+      <label class="form-label">Part Number</label>
+      <input
+        type="text"
+        class="form-control"
+        name="partNumber"
+        [(ngModel)]="device.partNumber"
+        required
+        #partNumber="ngModel">
+ 
+      <div *ngIf="partNumber.invalid && partNumber.touched" class="text-danger">
+        Part Number is required
+      </div>
+    </div>
+ 
+    <!-- Building Name -->
+    <div class="mb-3">
+      <label class="form-label">Building Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="buildingName"
+        [(ngModel)]="device.buildingName"
+        required
+        #buildingName="ngModel">
+ 
+      <div *ngIf="buildingName.invalid && buildingName.touched" class="text-danger">
+        Building Name is required
+      </div>
+    </div>
+ 
+    <!-- Device Type -->
+    <div class="mb-3">
+      <label class="form-label">Device Type</label>
+      <input
+        type="text"
+        class="form-control"
+        name="deviceType"
+        [(ngModel)]="device.deviceType"
+        required
+        #deviceType="ngModel">
+ 
+      <div *ngIf="deviceType.invalid && deviceType.touched" class="text-danger">
+        Device Type is required
+      </div>
+    </div>
+ 
+    <!-- Shelf Positions -->
+    <div class="mb-3">
+      <label class="form-label">No Of Shelf Positions</label>
+      <input
+        type="number"
+        class="form-control"
+        name="noOfShelfPositions"
+        [(ngModel)]="device.noOfShelfPositions"
+        required
+        min="1"
+        #positions="ngModel">
+ 
+      <div *ngIf="positions.invalid && positions.touched" class="text-danger">
+        Shelf Positions must be at least 1
+      </div>
+    </div>
+ 
+    <!-- Buttons -->
+    <div class="mt-4">
+ 
+      <button
+        type="submit"
+        class="btn btn-success me-2"
+        [disabled]="deviceForm.invalid">
+        Create Device
+      </button>
+ 
+      <button
+        type="button"
+        class="btn btn-secondary"
+        routerLink="/">
+        Cancel
+      </button>
+ 
+    </div>
+ 
+  </form>
+ 
+</div>

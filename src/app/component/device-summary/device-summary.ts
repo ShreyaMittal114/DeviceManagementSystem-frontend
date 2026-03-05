@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DeviceService } from '../../services/DeviceService';
 import { Device } from '../../models/device';
 import { ShelfPosition } from '../../models/ShelfPosition';
@@ -9,7 +9,7 @@ import { signal } from '@angular/core';
 @Component({
   selector: 'app-device-summary',
   standalone:true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './device-summary.html',
  
   styleUrl: './device-summary.css',
@@ -23,7 +23,8 @@ ShelfPosition = signal<ShelfPosition []>([]);
 constructor(
  
   private route:ActivatedRoute,
-  private deviceService:DeviceService
+  private deviceService:DeviceService,
+  private router:Router
 ){}
 
 ngOnInit():void{
@@ -47,9 +48,30 @@ ngOnInit():void{
     error:(err)=>{
     console.error(err);
   }
- })
+ });
+
+
+ 
+
+} 
+deleteDevice(){
+
+  const confirm = ("Do u really want to delet this device?");
+
+  if(confirm){
+  this.deviceService.deleteDevice(this.deviceId).subscribe({
+   next :()=>{
+    alert("device deleted successfully");
+    this.router.navigate(['']);
+  },
+    error:(err)=>{
+    console.error("Error deleteing device ",err);
+  }
+
+ });
+ }
+ 
 
 }
 
-     
 }
