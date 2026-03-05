@@ -1,13 +1,35 @@
-<h2>Device List</h2>
+<h2 class="text-center">Device List</h2>
  
-<p>Total Devices: {{ devices.length }}</p>
+<p><b>Total Devices:</b> {{ devices().length }}</p>
  
-<div *ngFor="let device of devices">
-  <p>
-    Name: {{ device.name }} |
-    Part: {{ device.partNumber }} |
-    Building: {{ device.buildingName }} |
-    Type: {{ device.deviceType }} |
-    Shelf: {{ device.noOfShelfPositions }}
-  </p>
-</div>
+<table class="table table-bordered table-striped table-hover">
+ 
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Part Number</th>
+      <th>Building</th>
+      <th>Device Type</th>
+      <th>Shelf Positions</th>
+    </tr>
+  </thead>
+ 
+ <tbody>
+  <tr *ngFor="let device of devices(); let i = index">
+    <td>{{ i + 1 }}</td>
+ 
+    <td>
+      <a [routerLink]="['/devices', device.id]">
+        {{ device.name }}
+      </a>
+    </td>
+ 
+    <td>{{ device.partNumber }}</td>
+    <td>{{ device.buildingName }}</td>
+    <td>{{ device.deviceType }}</td>
+    <td>{{ device.noOfShelfPositions }}</td>
+  </tr>
+</tbody>
+ 
+</table>

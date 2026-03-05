@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Device} from '../models/device';
+import { ShelfPosition } from '../models/ShelfPosition';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,9 @@ export class DeviceService {
 
   deleteDevice(id:String):Observable<string>{
   return this.http.delete<string>(`${this.baseUrl}/${id}`);
+  }
+
+  getShelfPositions(id:string){
+    return this.http.get<ShelfPosition []>(`${this.baseUrl}/${id}/shelfPosition`)
   }
 }

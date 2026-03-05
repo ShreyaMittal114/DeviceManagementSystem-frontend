@@ -5,5 +5,5 @@ export interface Device{
     buildingName:string;
     deviceType:string;
     noOfShelfPositions:number;
-    Deleted:boolean;
+    Deleted?:boolean;
 }

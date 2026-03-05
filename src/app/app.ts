@@ -6,7 +6,7 @@ import { DeviceComponent } from './component/device-component/device-component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,DeviceComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
