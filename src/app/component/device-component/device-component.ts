@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ShelfService } from '../../services/shelf-service';
+import { Shelf } from '../../models/Shelf';
 
 @Component({
   selector: 'app-device-component',
@@ -16,11 +18,13 @@ import { FormsModule } from '@angular/forms';
 export class DeviceComponent implements OnInit {
  
   devices= signal<Device[]> ([]);
+  shelves= signal<Shelf[]> ([]);
  
-  constructor(private deviceService: DeviceService) {}
+  constructor(private deviceService: DeviceService,private shelfService:ShelfService) {}
  
   ngOnInit(): void {
     this.loadDevices();
+    this.loadShelves();
   }
  
   loadDevices() {
@@ -35,6 +39,21 @@ export class DeviceComponent implements OnInit {
       }
     });
   }
+
+  loadShelves() {
+    this.shelfService.getAllShelves().subscribe({
+      next: (data) => {
+        console.log("data from backend",data);
+        this.shelves.set(data);
+
+      },
+      error: (err) => {
+        console.error('Error fetching shelves', err);
+      }
+    });
+  }
+
+
 
   searchName= '';
   searchType= '';

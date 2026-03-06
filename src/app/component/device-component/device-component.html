@@ -1,4 +1,8 @@
 <h1 class="text-center">Device Management System</h1>
+
+ <h2 class="text-center">Device List</h2>
+<p><b>Total Devices:</b> {{ devices().length }}</p>
+
 <div class = "d-flex justify-content-between mb-3">
   <button 
    class="btn btn-primary"
@@ -7,8 +11,6 @@
   </button>
  
 </div>
- <h2 >Device List</h2>
-<p><b>Total Devices:</b> {{ devices().length }}</p>
  
 <table class="table table-bordered table-striped table-hover">
  
@@ -37,6 +39,52 @@
     <td>{{ device.buildingName }}</td>
     <td>{{ device.deviceType }}</td>
     <td>{{ device.noOfShelfPositions }}</td>
+  </tr>
+</tbody>
+ 
+</table>
+
+
+<h2 class="text-center">Shelf List</h2>
+<p><b>Total Shelves</b> {{ shelves().length }}</p>
+
+<div class = "d-flex justify-content-between mb-3">
+  <button 
+   class="btn btn-primary"
+   routerLink ="/create-shelves">
+   Create Shelf
+  </button>
+ 
+</div>
+ 
+<table class="table table-bordered table-striped table-hover">
+ 
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Part Number</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+ 
+ <tbody>
+  <tr *ngFor="let shelf of shelves(); let i = index">
+    <td>{{ i + 1 }}</td>
+     <td>
+      <a [routerLink]="['/shelves', shelf.id]">
+        {{ shelf.name }}
+      </a>
+    </td>
+     
+    <td>{{ shelf.partNumber}}</td>
+    
+  
+        <td>
+          <span class="badge bg-success" *ngIf="shelf.Occupied">Occupied</span>
+          <span class="badge bg-secondary" *ngIf="!shelf.Occupied">Available</span>
+        </td>
+  
   </tr>
 </tbody>
  

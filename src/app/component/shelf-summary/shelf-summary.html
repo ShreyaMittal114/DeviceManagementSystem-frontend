@@ -1,0 +1,37 @@
+<div class="container mt-4">
+ 
+  <h2 class="text-center mb-4">Shelf Summary</h2>
+ 
+ 
+  <div class="card p-3 mb-4 shadow-sm" *ngIf="shelf()">
+ 
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th style="width:30%">Name</th>
+          <td>{{shelf()?.name}}</td>
+        </tr>
+ 
+        <tr>
+          <th>Part Number</th>
+          <td>{{shelf()?.partNumber}}</td>
+        </tr>
+ 
+      </tbody>
+    </table>
+ 
+  </div>
+
+
+  
+<div class="d-flex justify-content-between mt-3">
+    
+   <button class="btn btn-success" (click)="updateShelf(shelf()?.id!)">
+    Update Shelf
+  </button>
+
+  <button class="btn btn-danger" (click)="deleteShelf()">
+    Delete Shelf
+  </button>
+ 
+</div>

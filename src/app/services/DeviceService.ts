@@ -48,4 +48,14 @@ export class DeviceService {
   getShelfPositions(id:string){
     return this.http.get<ShelfPosition []>(`${this.baseUrl}/${id}/shelfPosition`)
   }
+
+   updateDevice(id:string,device:Device){
+    return this.http.put<Device>(`${this.baseUrl}/${id}`,device,{responseType:'text' as 'json'});
+  }
+
+   occupyShelf(shelfId:string,spId:string){
+    return this.http.put(`http://localhost:8080/shelves/occupy?shelfId=${shelfId}&shelfPositionId=${spId}`,{},{responseType:'text' as 'json'});
+  }
+
+ 
 }

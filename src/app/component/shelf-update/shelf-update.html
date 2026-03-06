@@ -1,0 +1,41 @@
+<div class="container mt-4">
+ 
+  <h2 class="text-center">Update Shelf</h2>
+ 
+  <form *ngIf="shelf" #form ="ngForm"
+  (ngSubmit)="updateShelf()">
+ 
+    <div class="mb-3">
+      <label class="form-label">Shelf Name</label>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="shelf.name"
+             name="shelfName"
+             required 
+         #name="ngModel"> <div *ngIf="name.invalid && name.touched" class="text-danger">
+       Name is required
+  </div>
+</div>
+
+    <div class="mb-3">
+      <label class="form-label">Part Number</label>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="shelf.partNumber"
+             name="partNumber"
+         required 
+         #partNumber="ngModel"> <div *ngIf="partNumber.invalid && partNumber.touched" class="text-danger">
+       Part Number is required
+  </div>
+</div>
+    
+    <button class="btn btn-success"
+        [disabled]="form.invalid">
+          Update Shelf
+    </button>
+ 
+  </form>
+ 
+</div>
+ 
+
