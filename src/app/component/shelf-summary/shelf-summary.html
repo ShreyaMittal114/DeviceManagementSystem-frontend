@@ -17,13 +17,14 @@
           <td>{{shelf()?.partNumber}}</td>
         </tr>
  
-         <tr>
+         <tr *ngIf="shelf()?.Occupied">
           <th>Shelf Position</th>
           <td>{{shelf()?.shelfPosition?.positionId}}</td>
         </tr>
         
-         <tr>
+         <tr *ngIf="shelf()?.Occupied">
           <th>Device</th>
+          
           <td>{{shelf()?.device?.name}}</td>
         </tr>
  
