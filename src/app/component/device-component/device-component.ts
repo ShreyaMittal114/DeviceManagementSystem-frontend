@@ -24,7 +24,7 @@ export class DeviceComponent implements OnInit {
  
   ngOnInit(): void {
     this.loadDevices();
-    this.loadShelves();
+   
   }
  
   loadDevices() {
@@ -40,18 +40,7 @@ export class DeviceComponent implements OnInit {
     });
   }
 
-  loadShelves() {
-    this.shelfService.getAllShelves().subscribe({
-      next: (data) => {
-        console.log("data from backend",data);
-        this.shelves.set(data);
-
-      },
-      error: (err) => {
-        console.error('Error fetching shelves', err);
-      }
-    });
-  }
+  
 
 
 
@@ -59,26 +48,26 @@ export class DeviceComponent implements OnInit {
   searchType= '';
   searchBuildingName= '';
 
-  searchDevices(){
-      this.deviceService.searchDevice(
-        this.searchName,
-        this.searchType,
-        this.searchBuildingName
-      ).subscribe({
-        next:(data)=>{
-          this.devices.set(data);
-        },
-        error:(err)=>{
-          console.log("search error",err)
-        }
-      })
-  }
+  // searchDevices(){
+  //     this.deviceService.searchDevice(
+  //       this.searchName,
+  //       this.searchType,
+  //       this.searchBuildingName
+  //     ).subscribe({
+  //       next:(data)=>{
+  //         this.devices.set(data);
+  //       },
+  //       error:(err)=>{
+  //         console.log("search error",err)
+  //       }
+  //     })
+  // }
 
-  resetsearch(){
-     this.searchName= '';
-  this.searchType= '';
-  this.searchBuildingName= '';
-  this.loadDevices();
-  }
+  // resetsearch(){
+  //    this.searchName= '';
+  // this.searchType= '';
+  // this.searchBuildingName= '';
+  // this.loadDevices();
+  // }
 
 }

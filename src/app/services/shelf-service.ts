@@ -27,8 +27,12 @@ export class ShelfService {
     return this.http.post<string>(`${this.baseUrl}/create`,shelf,{responseType:'text' as 'json'});
     }
 
-  updateShelf(id:string,shelf:Shelf){
-      return this.http.put<Shelf>(`${this.baseUrl}/${id}/update`,shelf,{responseType:'text' as 'json'});
+  updateShelf(id:string,shelf:Shelf):Observable<string>{
+      return this.http.put<string>(`${this.baseUrl}/${id}/update`,shelf,{responseType:'text' as 'json'});
+    }
+
+    removeShelf(id:String){
+      return this.http.delete<String>(`${this.baseUrl}/remove-shelf/${id}`,{responseType:'text' as 'json'})
     }
   
    

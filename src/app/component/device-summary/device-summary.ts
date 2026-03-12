@@ -122,4 +122,24 @@ loadShelves() {
   });
 }
 
+
+removeShelf(shelfId:string) {
+
+   if (!shelfId) {
+    alert("Please select a shelf")
+   return;
+  }
+  this.shelfService.removeShelf(shelfId).subscribe({
+  next: () => {
+      alert("Shelf removed successfully");
+      this.loadDevice()   // reload device summary
+    },
+    error: (err) => {
+      console.error("Error removing shelf", err);
+    }
+  });
+}
+
+
+
 }
